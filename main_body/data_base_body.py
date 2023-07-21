@@ -4,6 +4,8 @@ from random import choice
 
 
 class DataBase:
+    __RANDOM_DATA = ''
+
     def __init__(self):
         self.make_data_base()
 
@@ -28,7 +30,8 @@ class DataBase:
         with sq.connect('eng_word.db') as con:
             cur = con.cursor()
             res = cur.execute("""SELECT * FROM eng_words""")
-            return choice([*res])
+            self.__RANDOM_DATA = choice([*res])[0:]
+            return self.__RANDOM_DATA
 
     @staticmethod
     def check_availability(data):
@@ -42,15 +45,14 @@ class DataBase:
         return flag
 
 
-
 if __name__ == '__main__':
     db = DataBase()
-    w = Word('hello', 'привіт')
-    w1 = Word('home', 'дім')
-    w2 = Word('tree', 'дерево')
-    w3 = Word('sky', 'небо')
-    db.add_data(w)
-    db.add_data(w1)
-    db.add_data(w2)
-    db.add_data(w3)
+    # w = Word('hello', 'привіт')
+    # w1 = Word('home', 'дім')
+    # w2 = Word('tree', 'дерево')
+    # w3 = Word('sky', 'небо')
+    # db.add_data(w)
+    # db.add_data(w1)
+    # db.add_data(w2)
+    # db.add_data(w3)
     print(db.get_random_data())
