@@ -7,8 +7,10 @@ class DataBase:
     def make_data_base(self):
         with sq.connect('eng_word.db') as con:
             cur = con.cursor()
-            cur.execute("""
-            """)
+            cur.execute("""CREATE TABLE IF NOT EXISTS eng_words (
+            word TEXT,
+            translation TEXT
+            )""")
 
     def add_data(self):
         pass
