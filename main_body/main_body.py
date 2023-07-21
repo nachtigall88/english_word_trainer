@@ -8,4 +8,4 @@ class Word:
 
 
 # w = Word('hello', 'привіт')
-# print(w)
+# print(w.word)
