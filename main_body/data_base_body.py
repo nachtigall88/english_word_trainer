@@ -4,9 +4,9 @@ from random import choice
 
 
 class DataBase:
-    __RANDOM_DATA = ''
 
     def __init__(self):
+        self.random_data = ''
         self.make_data_base()
 
     def make_data_base(self):
@@ -30,8 +30,8 @@ class DataBase:
         with sq.connect('eng_word.db') as con:
             cur = con.cursor()
             res = cur.execute("""SELECT * FROM eng_words""")
-            self.__RANDOM_DATA = choice([*res])[0:]
-            return self.__RANDOM_DATA
+            self.random_data = choice([*res])[0:]
+            return self.random_data
 
     @staticmethod
     def check_availability(data):
